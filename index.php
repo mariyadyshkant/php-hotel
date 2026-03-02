@@ -92,9 +92,29 @@
 
         ];
 
+        $hotelsFiltrati = $hotels;
 
+        if (isset($_GET['parcheggio']) && $_GET['parcheggio'] != "") {
+            $filtroParcheggio = $_GET['parcheggio'];
+            $hotelsFiltrati = array_filter($hotelsFiltrati, function ($hotel) use ($filtroParcheggio) {
+            if ($filtroParcheggio === "si") {
+                return $hotel['parking'] === true;
+            } elseif ($filtroParcheggio === "no") {
+                return $hotel['parking'] === false;
+            }
+          }); 
+        };
         
-        foreach ($hotels as $hotel) {
+
+        if (isset($_GET['stelle']) && $_GET['stelle'] != "") {
+            $filtroStelle = intval($_GET['stelle']);
+            $hotelsFiltrati = array_filter($hotelsFiltrati, function($hotel) use ($filtroStelle) {
+                    return $hotel['vote'] >= $filtroStelle;
+                });
+        };
+               
+
+        foreach ($hotelsFiltrati as $hotel) {
             echo "<tr class='text-center'>";
             foreach ($hotel as $a => $b) {
                 if ($b === true) {
