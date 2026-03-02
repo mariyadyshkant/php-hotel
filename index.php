@@ -9,6 +9,35 @@
 <body>
     <h1>Hotels List</h1>
     <br>
+    <form method="get">
+        <div class="row justify-content-center">
+            <div class="col-4">
+                <select name="parcheggio" class="custom-select mr-sm-2" id="inlineFormCustomSelect">
+                <option value="" selected>Cerco un hotel...</option>
+                <option value="si">Con parcheggio</option>
+                <option value="no">Senza parcheggio</option>
+                </select>
+            </div>
+            <div class="col-4">
+                <select name="stelle" class="custom-select mr-sm-2" id="inlineFormCustomSelect">
+                <option value="" selected>Stelle</option>
+                <option value="0">0 stelle</option>
+                <option value="1">1 stella o superiore</option>
+                <option value="2">2 stelle o superiore</option>
+                <option value="3">3 stelle o superiore</option>
+                <option value="4">4 stelle o superiore</option>
+                <option value="5">5 stelle o superiore</option>
+                </select>
+            </div>
+            <div class="col-auto">
+                <button type="submit" class="btn btn-primary mb-2">Cerca</button>
+            </div>
+            <div class="col-auto">
+                <button type="submit" class="btn btn-primary mb-2">Azzera</button>
+            </div>
+        </div>
+    </form>
+    <br>
     <table class="table table-bordered">
         <thead class="thead-dark">
           <tr class="text-center">
@@ -64,6 +93,7 @@
         ];
 
 
+        
         foreach ($hotels as $hotel) {
             echo "<tr class='text-center'>";
             foreach ($hotel as $a => $b) {
