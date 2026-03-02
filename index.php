@@ -8,14 +8,19 @@
 </head>
 <body>
     <h1>Hotels List</h1>
-    <table>
-        <tr>
-            <th>Hotel</th>
-            <th>Descriprion</th>
-            <th>Parking</th>
-            <th>Vote</th>
-            <th>Distance To Center</th>
-        </tr>
+    <br>
+    <table class="table table-bordered">
+        <thead class="thead-dark">
+          <tr class="text-center">
+            <th scope="col">Hotel</th>
+            <th scope="col">Description</th>
+            <th scope="col">Parking</th>
+            <th scope="col">Vote</th>
+            <th scope="col">Distance To Center</th>
+        </tr>  
+        </thead>
+        <tbody>
+
         <?php
 
         $hotels = [
@@ -60,13 +65,16 @@
 
 
         foreach ($hotels as $hotel) {
-            echo "<tr>";
+            echo "<tr class='text-center'>";
             foreach ($hotel as $a => $b) {
                 if ($b === true) {
                    echo "<td>Yes</td>"; 
                 } elseif ($b === false) {
                     echo "<td>No</td>"; 
-                } else {
+                } elseif ($a === "distance_to_center") {
+                    echo "<td>$b km</td>";
+                }
+                else {
                     echo "<td>$b</td>";
                 }
                 
@@ -74,6 +82,7 @@
             echo "</tr>";
         }
         ?>
+        </tbody>
     </table>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>  
 </body>
